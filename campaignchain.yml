@@ -1,0 +1,15 @@
+# This file is part of the CampaignChain package.
+#
+# (c) CampaignChain Inc. <info@campaignchain.com>
+#
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+
+modules:
+    campaignchain-google-analytics:
+        display_name: Google Analytics Property
+        description: Shows analytics data for a selected web property
+        hooks:
+            default:
+        params:
+            cta_tracking: true
