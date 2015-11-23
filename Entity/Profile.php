@@ -21,6 +21,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Profile
 {
+    CONST METRIC_PAGEVIEW = 'ga:pageviews';
+    CONST METRIC_SESSION = 'ga:sessions';
+    CONST METRIC_VISITORS = 'ga:visitors';
+    CONST SEGMENT_ORGANIC = 'gaid::-5';
+    CONST SEGMENT_DIRECT = 'gaid::-7';
+    CONST SEGMENT_PAID = 'gaid::-4';
+
     /**
      * @var integer
      *
@@ -55,7 +62,34 @@ class Profile
      */
     protected $displayName;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    protected $metrics=['ga:sessions'];
 
+    public static function getMetricsArray() {
+        return [
+            self::METRIC_PAGEVIEW => 'Pageviews',
+            self::METRIC_SESSION => 'Sessions',
+            self::METRIC_VISITORS => 'Visitors',
+        ];
+    }
+
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $segment;
+
+    public static function getSegmentsArray() {
+        return [
+            0 => 'None',
+            self::SEGMENT_DIRECT => 'Direct',
+            self::SEGMENT_ORGANIC => 'Organic',
+            self::SEGMENT_PAID => 'Paid',
+
+        ];
+    }
 
     /**
      * Get id
@@ -153,5 +187,39 @@ class Profile
     {
         $this->displayName = $displayName;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMetrics()
+    {
+        return $this->metrics;
+    }
+
+    /**
+     * @param mixed $metrics
+     */
+    public function setMetrics($metrics)
+    {
+        $this->metrics = $metrics;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSegment()
+    {
+        return $this->segment;
+    }
+
+    /**
+     * @param mixed $segment
+     */
+    public function setSegment($segment)
+    {
+        $this->segment = $segment;
+    }
+
+
 
 }

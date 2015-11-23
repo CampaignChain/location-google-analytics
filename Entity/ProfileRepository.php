@@ -14,5 +14,12 @@ use Doctrine\ORM\EntityRepository;
 
 class ProfileRepository extends EntityRepository
 {
+    public function getGoogleIds(){
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.profileId');
 
+        return array_map(function($row){
+            return $row['profileId'];
+        }, $qb->getQuery()->getArrayResult());
+    }
 }
