@@ -79,7 +79,7 @@ class Profile
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $segment;
+    protected $segment = '0';
 
     public static function getSegmentsArray() {
         return [
@@ -90,6 +90,11 @@ class Profile
 
         ];
     }
+
+    /**
+     * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location")
+     */
+    protected $belongingLocation;
 
     /**
      * Get id
@@ -219,6 +224,24 @@ class Profile
     {
         $this->segment = $segment;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBelongingLocation()
+    {
+        return $this->belongingLocation;
+    }
+
+    /**
+     * @param mixed $belongingLocation
+     */
+    public function setBelongingLocation($belongingLocation)
+    {
+        $this->belongingLocation = $belongingLocation;
+    }
+
+
 
 
 
