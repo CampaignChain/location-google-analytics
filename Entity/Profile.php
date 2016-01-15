@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Profile
  *
- * @ORM\Table(name="campaignchain_location_google_analytics_profile")
+ * @ORM\Table(name="campaignchain_location_google_analytics")
  * @ORM\Entity(repositoryClass="CampaignChain\Location\GoogleAnalyticsBundle\Entity\ProfileRepository")
  */
 class Profile
@@ -39,11 +39,12 @@ class Profile
 
     /**
      * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location")
+     * @ORM\JoinColumn(referencedColumnName="id",nullable=true, onDelete="SET NULL")
      */
     protected $location;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true, )
      */
     protected $identifier;
 
@@ -93,6 +94,7 @@ class Profile
 
     /**
      * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location")
+     * @ORM\JoinColumn(referencedColumnName="id",nullable=true, onDelete="SET NULL")
      */
     protected $belongingLocation;
 
