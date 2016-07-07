@@ -4,3 +4,10 @@
 #
 # For the full copyright and license information, please view the LICENSE
 # file that was distributed with this source code.
+services:
+    campaignchain.location.google_analytics.profile_updater:
+        class: CampaignChain\Location\GoogleAnalyticsBundle\CampaignChain\UpdateGoogleProfileEntities
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+        tags:
+            - { name: campaignchain.code_updater }

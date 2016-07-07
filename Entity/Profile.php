@@ -54,6 +54,11 @@ class Profile
     protected $accountId;
 
     /**
+     * @ORM\Column(type="string", length=55, nullable=true)
+     */
+    protected $propertyId;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $profileId;
@@ -243,8 +248,20 @@ class Profile
         $this->belongingLocation = $belongingLocation;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPropertyId()
+    {
+        return $this->propertyId;
+    }
 
-
-
+    /**
+     * @param mixed $propertyId
+     */
+    public function setPropertyId($propertyId)
+    {
+        $this->propertyId = $propertyId;
+    }
 
 }
