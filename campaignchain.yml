@@ -9,6 +9,8 @@ modules:
     campaignchain-google-analytics:
         display_name: Google Analytics Property
         description: Shows analytics data for a selected web property
+        channels:
+            - campaignchain/channel-google-analytics/campaignchain-google-analytics
         hooks:
             default:
         params:
