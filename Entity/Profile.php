@@ -46,12 +46,12 @@ class Profile
 
     /**
      * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location")
-     * @ORM\JoinColumn(referencedColumnName="id",nullable=true, onDelete="SET NULL")
+     * @ORM\JoinColumn(referencedColumnName="id",nullable=true, onDelete="CASCADE")
      */
     protected $location;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true, )
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     protected $identifier;
 
@@ -105,8 +105,8 @@ class Profile
     }
 
     /**
-     * @ORM\OneToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location")
-     * @ORM\JoinColumn(referencedColumnName="id",nullable=true, onDelete="SET NULL")
+     * @ORM\ManyToOne(targetEntity="CampaignChain\CoreBundle\Entity\Location")
+     * @ORM\JoinColumn(referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $belongingLocation;
 
